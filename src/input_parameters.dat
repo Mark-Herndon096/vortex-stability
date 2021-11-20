@@ -1,0 +1,25 @@
+! Input file for vortex filament method solver
+! Set nv and nvt to same value if not studying ground effect case
+! Set nvt to 2*nv for ground effect configuration
+&CODE_DATA
+	nt  = 2350           !< # of time steps
+  dt  = 0.005          !< Size of time step
+	nv  = 2              !< # of vortices in real plane
+	nvt = 2              !< # of vortices in ground-image system
+	nk  = 100            !< # of wavenumbers   
+	kspan = 4.0          !< Wavenumber span (ka) 
+	GE  = .FALSE.        !< Ground effect logical
+	!GE  = .TRUE.        !< Ground effect logical
+/&END
+
+! Geometry of vortex configuration -- place vortices at desired initial positions
+! Understand your own separation b and initial height h when placing vortices
+! Values must be non-dimensionalized by characteristic scales
+&VORTEX_DATA
+  Y_0 = -0.5, 0.5      !< Y_0 coordinates of vortex 1, vortex 2, ... vortex nv
+  Z_0 =  1.5, 1.5    !< Z_0 coorindates of vortex 1, vortex 2, ... vortex nv
+  eta_0 = -0.0, 0.0    !< eta_0  coordinates of vortex 1, vortex 2, ... vortex nv
+  zeta_0 = 0.01, 0.01  !< zeta_0 coorindates of vortex 1, vortex 2, ... vortex nv
+  GAM = -1.0, 1.0      !< Circulation orientation 
+  a   =  0.197        !< Vortex core radius
+/&END
